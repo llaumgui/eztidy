@@ -28,7 +28,7 @@ class eZTidyInfo
     static function info()
     {
         return array(   'Name'            => "eZTidy",
-                        'Version'         => "1.0.0",
+                        'Version'         => "0.9",
                         'Copyright'       => "Copyright (c) 2007-2008 Guillaume Kulakowski and contributors",
                         'info_url'        => "http://projects.ez.no/eztidy",
                         'License'         => "GNU General Public License v2.0"

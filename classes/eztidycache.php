@@ -90,24 +90,24 @@ class eZTidyCache extends eZTidy
     {
         switch ($scope)
         {
-        	case 'viewcache':
-            	if ( strtolower($this->options['viewCache']) == 'enabled' )
-            	{
-            	    $this->cleanSerial( $contents, 'content' );
-                    eZDebugSetting::writeDebug( "\"$filePath\" with scope \"$scope\" is tidyfied", "eZTidyCache::clean()" );
-            	}
-            	break;
+            case 'viewcache':
+                if ( strtolower($this->options['viewCache']) == 'enabled' )
+                {
+                    $this->cleanSerial( $contents, 'content' );
+                    eZDebugSetting::writeNotice( "extension-eztidy", "\"$filePath\" with scope \"$scope\" is tidyfied", "eZTidyCache::clean()" );
+                }
+                break;
 
-        	case 'template-block':
-        	   if ( strtolower($this->options['templateBlock']) == 'enabled' )
-        	    {
-    	            $contents = $this->tidyCleaner( $contents );
-    	            eZDebug::writeDebug( "\"$filePath\" with scope \"$scope\" is tidyfied", "eZTidyCache::clean()" );
-        	    }
-            	break;
+            case 'template-block':
+               if ( strtolower($this->options['templateBlock']) == 'enabled' )
+                {
+                    $contents = $this->tidyCleaner( $contents );
+                    eZDebug::writeNotice( "extension-eztidy", "\"$filePath\" with scope \"$scope\" is tidyfied", "eZTidyCache::clean()" );
+                }
+                break;
 
-        	default:
-            	break;
+            default:
+                break;
         }
     }
 

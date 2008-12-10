@@ -45,7 +45,7 @@ class eZTidyTemplatesOperators
      */
     function __construct()
     {
-        /* Opérateurs */
+        /* Opï¿½rateurs */
         $this->Operators = array(
             'tidy',
         );
@@ -78,7 +78,7 @@ class eZTidyTemplatesOperators
         switch ( $operatorName )
         {
             case 'tidy':
-                eZDebugSetting::writeDebug( "Use tidy template operator", "eZTidy::tidyCleaner()" );
+                eZDebugSetting::writeNotice( "extension-eztidy", "Use 'tidy' template operator", "eZTidy::tidyCleaner()" );
                 eZDebug::accumulatorStart( 'eztidytemplateoperator', 'Tidy', 'Tidy template operator' );
                 $tidy = eZTidy::instance();
                 $operatorValue = $tidy->tidyCleaner( $operatorValue );

@@ -4,8 +4,7 @@
 # Global charset past to Tidy
 Charset=utf8
 # Add <!-- Tidy - Begin --> & <!-- Tidy - End -->
-ShowTidyElement=disabled
-
+ShowTidyElement=enabled
 
 
 [TidyCache]
@@ -18,10 +17,11 @@ Configuration[]
 # HTML, XHTML, XML Options Reference
 Configuration[anchor-as-name]=0
 Configuration[alt-text]=
-Configuration[hide-comments]=1
+Configuration[doctype]=omit
+Configuration[hide-comments]=0
 Configuration[indent-cdata]=1
-Configuration[output-xhtml]=1
-Configuration[show-body-only]=1
+Configuration[output-xhtml]=0
+Configuration[show-body-only]=auto
 # Diagnostics Options Reference
 # Pretty Print Options Reference
 Configuration[indent]=1
@@ -29,7 +29,6 @@ Configuration[indent-spaces]=2
 Configuration[wrap]=0
 # Character Encoding Options Reference
 # Miscellaneous Options Reference
-
 
 
 [Tidy]
@@ -46,7 +45,6 @@ Configuration[show-body-only]=1
 # Diagnostics Options Reference
 # Pretty Print Options Reference
 Configuration[indent]=1
-Configuration[indent-spaces]=2
 Configuration[wrap]=0
 # Character Encoding Options Reference
 # Miscellaneous Options Reference

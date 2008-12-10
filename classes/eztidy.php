@@ -79,11 +79,8 @@ class eZTidy
     private function reportWarning()
     {
         $warning = tidy_get_error_buffer($this->tidy);
-        $warning = explode( '\n', $warning );
-        foreach( $warning as $w )
-        {
-            eZDebugSetting::writeError( "$w", 'eZTidy::tidyCleaner()' );
-        }
+        if ( !empty($warning) )
+            eZDebugSetting::writeWarning( "extension-eztidy", "$warning", 'eZTidy::tidyCleaner()' );
     }
 
 
@@ -113,7 +110,7 @@ class eZTidy
 
         $output = tidy_get_output( $this->tidy );
         if ( strtolower($this->options['showTidyElement']) == 'enabled' )
-            $output = "<!-- Tidy - Begin -->\n" . $output . "\n<!-- Tidy - End -->";
+            return "<!-- Tidy - Begin -->\n" . $output . "\n<!-- Tidy - End -->";
 
         return $output;
     }
