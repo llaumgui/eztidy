@@ -3,4 +3,7 @@
 [TemplateSettings]
 ExtensionAutoloadPath[]=eztidy
 
+[OutputSettings]
+#OutputFilterName=eZTidyFilter
+
 */ ?>
