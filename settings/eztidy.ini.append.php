@@ -3,32 +3,9 @@
 [Global]
 # Global charset past to Tidy
 Charset=utf8
-# Add <!-- Tidy - Begin --> & <!-- Tidy - End -->
+
+# Add <!-- Tidy - Begin --> and <!-- Tidy - End -->
 ShowTidyElement=enabled
-
-
-[TidyCache]
-ViewCache=enabled
-TemplateBlock=enabled
-
-# Tidy cache configuration
-# Look at http://tidy.sourceforge.net/docs/quickref.html
-Configuration[]
-# HTML, XHTML, XML Options Reference
-Configuration[anchor-as-name]=0
-Configuration[alt-text]=
-Configuration[doctype]=omit
-Configuration[hide-comments]=0
-Configuration[indent-cdata]=1
-Configuration[output-xhtml]=0
-Configuration[show-body-only]=auto
-# Diagnostics Options Reference
-# Pretty Print Options Reference
-Configuration[indent]=1
-Configuration[indent-spaces]=2
-Configuration[wrap]=0
-# Character Encoding Options Reference
-# Miscellaneous Options Reference
 
 
 [Tidy]

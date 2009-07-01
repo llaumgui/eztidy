@@ -5,7 +5,7 @@
 // Created on: <28-nov-2008 12:14:34 bf>
 //
 // SOFTWARE NAME: eZTidy
-// SOFTWARE RELEASE: 1.0
+// SOFTWARE RELEASE: 0.2
 // BUILD VERSION:
 // COPYRIGHT NOTICE: Copyright (c) 2008 Guillaume Kulakowski and contributors
 // SOFTWARE LICENSE: GNU General Public License v2.0
@@ -45,7 +45,7 @@ class eZTidyTemplatesOperators
      */
     function __construct()
     {
-        /* Op�rateurs */
+        /* Opérateurs */
         $this->Operators = array(
             'tidy',
         );
@@ -79,10 +79,8 @@ class eZTidyTemplatesOperators
         {
             case 'tidy':
                 eZDebugSetting::writeNotice( "extension-eztidy", "Use 'tidy' template operator", "eZTidy::tidyCleaner()" );
-                eZDebug::accumulatorStart( 'eztidytemplateoperator', 'Tidy', 'Tidy template operator' );
                 $tidy = eZTidy::instance();
                 $operatorValue = $tidy->tidyCleaner( $operatorValue );
-                eZDebug::accumulatorStop( 'eztidytemplateoperator' );
                 break;
         }
     }

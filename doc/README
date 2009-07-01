@@ -1,0 +1,21 @@
+How use the tidy template operator :
+----------------------------------
+
+ * You can use the tidy operator like that :
+    > {$module_result.content |tidy()}
+ * You can configure the eztidy options in section "Global" of
+ eztidy.ini.append.php.
+ * You can configure the Tidy options in section "Tidy" of eztidy.ini.append.php.
+
+
+
+How use tidy  class :
+-------------------
+
+ * You can use directly eZTidy in your code, like that :
+    > $conf_section = 'my_configuration';
+    > $tidy = eZTidy::instance( $conf_section );
+    > $str = $tidy->tidyCleaner( $$str );
+ * You can configure all Tidy option in section "my_configuration" of
+ eztidy.ini.append.php.
+ * If no section is pass to eZTidy::instance(), eZTidy use the "Tidy" section

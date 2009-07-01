@@ -5,7 +5,7 @@
 // Created on: <28-nov-2008 12:14:34 bf>
 //
 // SOFTWARE NAME: eZTidy
-// SOFTWARE RELEASE: 1.0
+// SOFTWARE RELEASE: 0.2
 // BUILD VERSION:
 // COPYRIGHT NOTICE: Copyright (c) 2008 Guillaume Kulakowski and contributors
 // SOFTWARE LICENSE: GNU General Public License v2.0
@@ -43,13 +43,15 @@ class eZTidy
 
 
     /*!
-     Constructeur
+     Constructor
+
+     \param $conf_section string
      */
-    function __construct()
+    function __construct( $conf_section )
     {
         $ini = eZINI::instance( "eztidy.ini" );
 
-        $this->config = $ini->variable( 'Tidy', 'Configuration' );
+        $this->config = $ini->variable( $conf_section, 'Configuration' );
         $this->options = $ini->variableMulti( 'Global', array(
             'charset'            => 'Charset',
             'showTidyElement'    => 'ShowTidyElement'
@@ -58,23 +60,31 @@ class eZTidy
 
 
     /*!
-     Permet d'instancier l'objet eZTidy.
+     Get a new instance of eZTidy
 
+     \param $conf_section string
      \return object eZTidy
      */
-    static function instance()
+    static function instance( $conf_section = "Tidy" )
     {
-        if ( !isset( $GLOBALS['eZTidyInstance'] ) ||
-             !( $GLOBALS['eZTidyInstance'] instanceof eZTidy ) )
+        $globalsKey = "eZTidyGlobalInstance-$conf_section";
+        $globalsIsLoadedKey = "eZTidyGlobalIsLoaded-$conf_section";
+
+        if ( !isset( $GLOBALS[$globalsKey] ) ||
+            !( $GLOBALS[$globalsKey] instanceof eZTidy ) )
         {
-            $GLOBALS['eZTidyInstance'] = new eZTidy();
+            $GLOBALS[$globalsIsLoadedKey] = false;
+            $GLOBALS[$globalsKey] = new eZTidy( $conf_section );
+            $GLOBALS[$globalsIsLoadedKey] = true;
         }
 
-        return $GLOBALS['eZTidyInstance'];
+        return $GLOBALS[$globalsKey];
     }
 
+
+
     /*!
-     Affichage des warning tidy
+     Show tidy warning
      */
     private function reportWarning()
     {
@@ -86,15 +96,14 @@ class eZTidy
 
 
     /*!
-     * Tidyfication des strings
-     * @param $str
-     * @return unknown_type
+     Tidyfication des strings
+
+     \param $str string
+     \return string
      */
     public function tidyCleaner ( $str )
     {
-        $str = trim( $str );
-        if ( $str == "" )
-            return "";
+        eZDebug::accumulatorStart( 'eztidytemplateoperator', 'Tidy', 'Tidy template operator' );
 
         if ( !class_exists( 'tidy' ) )
         {
@@ -102,15 +111,21 @@ class eZTidy
             return $str;
         }
 
+        $str = trim( $str );
+        if ( $str == "" )
+            return "";
+
         $this->tidy = new tidy;
         $this->tidy->parseString( $str, $this->config, $this->options['charset'] );
         $this->tidy->cleanRepair();
         $this->isTidyfied = true;
         $this->reportWarning();
-
         $output = tidy_get_output( $this->tidy );
+
         if ( strtolower($this->options['showTidyElement']) == 'enabled' )
             return "<!-- Tidy - Begin -->\n" . $output . "\n<!-- Tidy - End -->";
+
+        eZDebug::accumulatorStop( 'eztidytemplateoperator' );
 
         return $output;
     }
