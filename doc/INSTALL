@@ -1,12 +1,14 @@
-*Installing eZTidy
+eZTidy
 
 
 Requirements:
-- eZ Publish 4.0.x
+============
+- eZ Publish 4.1.x
 
 
 Installing:
-1. Extract the eZTidy extension, and place it in the extensions folder. 
+==========
+1. Extract the eZTidy extension, and place it in the extensions folder.
 
 2. Enable the extension in eZ Publish. Do this by opening settings/override/site.ini.append.php ,
    and add in the [ExtensionSettings] block:

@@ -5,7 +5,7 @@
 // Created on: <28-nov-2008 12:14:34 bf>
 //
 // SOFTWARE NAME: eZTidy
-// SOFTWARE RELEASE: 0.2
+// SOFTWARE RELEASE: 0.9
 // BUILD VERSION:
 // COPYRIGHT NOTICE: Copyright (c) 2008 Guillaume Kulakowski and contributors
 // SOFTWARE LICENSE: GNU General Public License v2.0

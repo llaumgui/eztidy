@@ -1,5 +1,5 @@
-How to use the tidy template operator :
--------------------------------------
+How to use the tidy template operator:
+=====================================
 
  * You can use the tidy operator like that :
     > {$module_result.content |tidy()}
@@ -9,8 +9,8 @@ How to use the tidy template operator :
 
 
 
-How to use tidy class :
----------------------
+How to use tidy class:
+=====================
 
  * You can use directly eZTidy in your code, like that :
     > $conf_section = 'my_configuration';
@@ -22,8 +22,8 @@ How to use tidy class :
 
 
 
-How to use tidy output filter :
------------------------------
+How to use tidy output filter:
+=============================
 
  * In your site.ini :
     > [OutputSettings]

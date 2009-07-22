@@ -1,6 +1,6 @@
 <?php
 // SOFTWARE NAME: eZTidy
-// SOFTWARE RELEASE: 0.2
+// SOFTWARE RELEASE: 0.9
 // COPYRIGHT NOTICE: Copyright (c) 2007 Guillaume Kulakowski and contributors.
 // SOFTWARE LICENSE: GNU General Public License v2.0
 // NOTICE: >
@@ -28,8 +28,8 @@ class eZTidyInfo
     static function info()
     {
         return array(   'Name'            => "eZTidy",
-                        'Version'         => "0.2",
-                        'Copyright'       => "Copyright (c) 2007-2008 Guillaume Kulakowski and contributors",
+                        'Version'         => "0.9",
+                        'Copyright'       => "Copyright (c) 2008-2009 Guillaume Kulakowski and contributors",
                         'info_url'        => "http://projects.ez.no/eztidy",
                         'License'         => "GNU General Public License v2.0"
                  );
