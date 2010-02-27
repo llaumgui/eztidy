@@ -130,6 +130,6 @@ class eZTidy
         return $output;
     }
 
-} // EOC
+}
 
 ?>

@@ -43,6 +43,6 @@ class eZTidyFilter
         return $tidy->tidyCleaner( $output );
     }
 
-} // EOC
+}
 
 ?>

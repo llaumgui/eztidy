@@ -85,6 +85,6 @@ class eZTidyTemplatesOperators
         }
     }
 
-} // EOC
+}
 
 ?>
