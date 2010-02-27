@@ -5,7 +5,7 @@
 Charset=utf8
 
 # Add <!-- Tidy - Begin --> and <!-- Tidy - End -->
-ShowTidyElement=enabled
+ShowTidyElement=disabled
 
 
 [Tidy]
