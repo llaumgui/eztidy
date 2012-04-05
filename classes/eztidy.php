@@ -1,40 +1,19 @@
 <?php
-//
-// Definition of eZTidy class
-//
-// Created on: <28 nov. 2008 10:50:20 llaumgui>
-//
-// ## BEGIN COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
-// SOFTWARE NAME: eZTidy
-// SOFTWARE RELEASE: 1.0.0
-// COPYRIGHT NOTICE: Copyright (C) 2008-2011 Guillaume Kulakowski
-// SOFTWARE LICENSE: GNU General Public License v2.0
-// NOTICE: >
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2.0 of the GNU General
-// Public License as published by the Free Software Foundation.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of version 2.0 of the GNU General
-// Public License along with this program; if not, write to the Free
-// Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-// MA 02110-1301, USA.
-//
-//
-// ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
-//
+/**
+ * File containing the eZTidy class
+ *
+ * @version //autogentag//
+ * @package EZTidy
+ * @copyright Copyright (C) 2008-2012 Guillaume Kulakowski and contributors
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0
+ */
 
-/*! \file eztidy.php
-*/
-
-/*!
-  \class eZTidy eztidy.php
-  \brief
-*/
+/**
+ * The eZTidy class provide Tidy functions in eZ Publish
+ *
+ * @package EZTidy
+ * @version //autogentag//
+ */
 class eZTidy
 {
     protected $tidy;
@@ -46,7 +25,7 @@ class eZTidy
     /**
      * Constructor
      *
-     * @param $conf_section string
+     * @param string $conf_section
      */
     function __construct( $conf_section )
     {
@@ -64,7 +43,7 @@ class eZTidy
     /**
      * Get a new instance of eZTidy
      *
-     * @param $conf_section string
+     * @param string $conf_section
      * @return object eZTidy
      */
     static function instance( $conf_section = "Tidy" )
@@ -90,16 +69,19 @@ class eZTidy
      */
     private function reportWarning()
     {
-        $warning = tidy_get_error_buffer($this->tidy);
+        $warning = tidy_get_error_buffer( $this->tidy );
         if ( !empty($warning) )
+        {
             eZDebugSetting::writeWarning( "extension-eztidy", "$warning", 'eZTidy::tidyCleaner()' );
+        }
     }
 
 
 
     /**
      * Tidyfication of the strings
-	 * @param $str string
+     *
+     * @param string $str
      * @return string
      */
     public function tidyCleaner ( $str )
@@ -114,7 +96,9 @@ class eZTidy
 
         $str = trim( $str );
         if ( $str == "" )
+        {
             return "";
+        }
 
         $this->tidy = new tidy;
         $this->tidy->parseString( $str, $this->config, $this->options['charset'] );
@@ -123,8 +107,10 @@ class eZTidy
         $this->reportWarning();
         $output = tidy_get_output( $this->tidy );
 
-        if ( strtolower($this->options['showTidyElement']) == 'enabled' )
+        if ( strtolower( $this->options['showTidyElement'] ) == 'enabled' )
+        {
             return "<!-- Tidy - Begin -->\n" . $output . "\n<!-- Tidy - End -->";
+        }
 
         eZDebug::accumulatorStop( 'eztidytemplateoperator' );
 
