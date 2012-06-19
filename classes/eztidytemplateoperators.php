@@ -1,53 +1,30 @@
 <?php
-//
-// Definition of eZTidyTemplatesOperators class
-//
-// Created on: <28 nov. 2008 10:50:20 llaumgui>
-//
-// ## BEGIN COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
-// SOFTWARE NAME: eZTidy
-// SOFTWARE RELEASE: 1.0.0
-// COPYRIGHT NOTICE: Copyright (C) 2008-2011 Guillaume Kulakowski
-// SOFTWARE LICENSE: GNU General Public License v2.0
-// NOTICE: >
-// This program is free software; you can redistribute it and/or
-// modify it under the terms of version 2.0 of the GNU General
-// Public License as published by the Free Software Foundation.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of version 2.0 of the GNU General
-// Public License along with this program; if not, write to the Free
-// Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
-// MA 02110-1301, USA.
-//
-//
-// ## END COPYRIGHT, LICENSE AND WARRANTY NOTICE ##
-//
+/**
+ * File containing the eZTidyTemplatesOperators class
+ *
+ * @version //autogentag//
+ * @package EZTidy
+ * @copyright Copyright (C) 2008-2012 Guillaume Kulakowski and contributors
+ * @license http://www.gnu.org/licenses/gpl-2.0.html GNU General Public License v2.0
+ */
 
-
-/*! \file eztidycache.php
-*/
-
-/*!
-  \class eZTidyTemplatesOperators eztidytemplatesoperators.php
-  \brief
-*/
+/**
+ * The eZTidyTemplatesOperators class provide Tidy's templates operators to eZ Publish.
+ *
+ * @package EZTidy
+ * @version //autogentag//
+ */
 class eZTidyTemplatesOperators
 {
 
     private $Operators;
 
 
-    /*!
-     Constructor
+    /**
+     * Constructor
      */
     function __construct()
     {
-        /* Opérateurs */
         $this->Operators = array(
             'tidy',
         );
@@ -55,16 +32,35 @@ class eZTidyTemplatesOperators
 
 
 
+    /**
+     * Return list of operators
+     *
+     * @return multitype:string
+     */
     function &operatorList()
     {
         return $this->Operators;
     }
 
+
+
+    /**
+     * Return named parameters by operator
+     *
+     * @return boolean
+     */
     function namedParameterPerOperator()
     {
         return true;
     }
 
+
+
+    /**
+     * Return named parameters list
+     *
+     * @return multitype:multitype:
+     */
     function namedParameterList()
     {
          return array(
@@ -74,9 +70,20 @@ class eZTidyTemplatesOperators
 
 
 
+    /**
+     * Excecute template operator action
+     *
+     * @param eZTemplate_type $tpl
+     * @param string $operatorName
+     * @param array $operatorParameters
+     * @param operatorList $rootNamespace
+     * @param operatorList $currentNamespace
+     * @param string $operatorValue
+     * @param array $namedParameters
+     */
     function modify( &$tpl, &$operatorName, &$operatorParameters, &$rootNamespace,
-                      &$currentNamespace, &$operatorValue, &$namedParameters )
-    {
+        &$currentNamespace, &$operatorValue, &$namedParameters
+    ) {
         switch ( $operatorName )
         {
             case 'tidy':
