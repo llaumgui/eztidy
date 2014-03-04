@@ -10,9 +10,4 @@ eZTidy included
  * Class for use in your code : eZTidy
  * Output filter (require eZ Publish 4.1.x)
 
-Continuous integration
-======================
-eZTidy is under continuous integration: [http://ci.llaumgui.com/job/eZTidy/](http://ci.llaumgui.com/job/eZTidy/)
-
-
 ![eZ Publish Certified Developer](http://www.llaumgui.com/images/ezcertdev.png)
