@@ -1,3 +1,5 @@
+**This project is discontinued.**
+
 __Project hosted on eZ Projects Forge: [http://projects.ez.no/eztidy](http://projects.ez.no/eztidy)__
 
 Introduction
